@@ -20,7 +20,7 @@ build:
       - dist/    # Change to build/ if using CRA instead of Vite
     expire_in: 1 hour
   only:
-    - main
+    - master
 
 deploy:
   stage: deploy
