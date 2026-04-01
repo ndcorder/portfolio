@@ -17,7 +17,7 @@ build:
     - npm run build
   artifacts:
     paths:
-      - dist/    # Change to build/ if using CRA instead of Vite
+      - .next/    # Change to build/ if using CRA instead of Vite
     expire_in: 1 hour
   only:
     - master
@@ -36,10 +36,10 @@ deploy:
   script:
     - rsync -azv --delete
       -e "ssh -p ${SSH_PORT:-22} -o StrictHostKeyChecking=accept-new"
-      dist/
+      .next/
       ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/
   only:
-    - main
+    - master
   environment:
     name: production
     url: https://ndcorder.me
