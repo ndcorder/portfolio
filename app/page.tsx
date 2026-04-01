@@ -4,7 +4,7 @@ import { CopyButton } from './components/copy-button'
 import { CursorGlow } from './components/cursor-glow'
 import { AsciiPhoto } from './components/ascii-photo'
 
-// ── Swap this path to test different photos ──
+// Swap this path to test different photos
 const PHOTO_SRC = '/photo.jpg'
 
 const BIO =
@@ -38,7 +38,7 @@ const SKILLS = [
       { name: 'C#', note: '.NET integrations' },
       { name: 'Bash', note: 'System administration & scripting' },
       { name: 'Rust', note: 'Systems programming' },
-      { name: 'TypeScript', note: 'Frontend component development' },
+      { name: 'TypeScript', note: 'Frontend & tooling' },
       { name: 'Legacy Applications', note: 'Keeping old code alive' },
     ],
   },
@@ -51,7 +51,7 @@ const SKILLS = [
       { name: 'Serverless', note: 'Lambda & event-driven workflows' },
       { name: 'CI/CD', note: 'Continuous integration & deployment'},
       {name: 'Blockchain', note: 'Smart contracts & decentralized apps'},
-      {name: 'Docker', note: 'Orchestration & containerization'},
+      {name: 'Docker', note: 'Containers & local dev'},
     ],
   },
 ]

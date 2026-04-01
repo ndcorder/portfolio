@@ -50,11 +50,13 @@ function PhotoPlane({
   contrast,
   brightness,
   fit = 'cover',
+  onReady,
 }: {
   src: string
   contrast: number
   brightness: number
   fit?: 'cover' | 'contain'
+  onReady?: () => void
 }) {
   const texture = useLoader(
     THREE.TextureLoader,
@@ -70,10 +72,15 @@ function PhotoPlane({
     return m
   }, [texture])
 
+  const signaled = useRef(false)
   useFrame(() => {
     if (matRef.current) {
       matRef.current.uniforms.contrast.value = contrast
       matRef.current.uniforms.brightness.value = brightness
+    }
+    if (!signaled.current && texture?.image) {
+      signaled.current = true
+      onReady?.()
     }
   })
 
@@ -119,11 +126,13 @@ export function AsciiScene({
   bgColor = 'transparent',
   settings,
   fit = 'cover',
+  onReady,
 }: {
   src: string
   bgColor?: string
   settings: AsciiSettings
   fit?: 'cover' | 'contain'
+  onReady?: () => void
 }) {
   return (
     <Canvas
@@ -137,6 +146,7 @@ export function AsciiScene({
           fit={fit}
           contrast={settings.contrast}
           brightness={settings.brightness}
+          onReady={onReady}
         />
       </Suspense>
       <AsciiRenderer

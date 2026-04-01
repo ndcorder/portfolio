@@ -8,6 +8,7 @@ type AsciiSceneProps = {
   bgColor?: string
   settings: AsciiSettings
   fit?: 'cover' | 'contain'
+  onReady?: () => void
 }
 
 const DEFAULT_SETTINGS: AsciiSettings = {
@@ -107,6 +108,7 @@ export function AsciiPhoto({
   fit?: 'cover' | 'contain'
 }) {
   const [Scene, setScene] = useState<ComponentType<AsciiSceneProps> | null>(null)
+  const [ready, setReady] = useState(false)
   const [settings, setSettings] = useState<AsciiSettings>({
     ...DEFAULT_SETTINGS,
     ...initialSettings,
@@ -119,9 +121,11 @@ export function AsciiPhoto({
   if (!Scene) return null
 
   return (
-    <div className="relative w-full h-full">
+    <div
+      className={`relative w-full h-full transition-opacity duration-300 ease-in ${ready ? 'opacity-100' : 'opacity-0'}`}
+    >
       {debug && <Controls settings={settings} onChange={setSettings} />}
-      <Scene src={src} settings={settings} fit={fit} />
+      <Scene src={src} settings={settings} fit={fit} onReady={() => setReady(true)} />
     </div>
   )
 }
