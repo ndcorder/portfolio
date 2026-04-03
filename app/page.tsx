@@ -50,7 +50,6 @@ const SKILLS = [
       { name: 'MySQL / Redis', note: 'Data & caching layer' },
       { name: 'Serverless', note: 'Lambda & event-driven workflows' },
       { name: 'CI/CD', note: 'Continuous integration & deployment'},
-      {name: 'Blockchain', note: 'Smart contracts & decentralized apps'},
       {name: 'Docker', note: 'Containers & local dev'},
     ],
   },
@@ -127,7 +126,7 @@ export default function Home() {
               <DecryptText text="PRINCIPAL ENGINEER" delay={1500} />
             </div>
 
-            <div className="mt-2 font-mono text-xs md:text-sm tracking-[0.15em] uppercase text-[#2a2a30]">
+            <div className="mt-2 font-mono text-xs md:text-sm tracking-[0.15em] uppercase text-[#3f3f46]">
               <DecryptText text="REDROCK SOFTWARE CORPORATION" delay={1900} />
             </div>
           </div>
@@ -140,7 +139,7 @@ export default function Home() {
         {/* Scroll hint */}
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
           <span className="font-mono text-[12px] tracking-[0.3em] text-[#3a3a42]">
-            EXPERIENCE
+            ABOUT
           </span>
           <div className="w-px h-12 bg-gradient-to-b from-[#3a3a42]/60 to-transparent" />
         </div>
@@ -274,7 +273,7 @@ export default function Home() {
 
       {/* ═══════════ FOOTER ═══════════ */}
       <footer className="relative z-20 px-8 md:px-16 lg:px-24 py-8 border-t border-[#18181b]">
-        <div className="font-mono text-[12px] tracking-[0.2em] uppercase text-[#2a2a30]">
+        <div className="font-mono text-[12px] tracking-[0.2em] uppercase text-[#3f3f46]">
           © 2026 NICOLAS CORDER
         </div>
       </footer>
