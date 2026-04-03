@@ -2,6 +2,7 @@ import { DecryptText } from './components/decrypt-text'
 import { ScrollReveal } from './components/scroll-reveal'
 import { CopyButton } from './components/copy-button'
 import { CursorGlow } from './components/cursor-glow'
+import { Nav } from './components/nav'
 import { AsciiPhoto } from './components/ascii-photo'
 
 // Swap this path to test different photos
@@ -119,6 +120,8 @@ export default function Home() {
       {/* Cursor glow */}
       <CursorGlow />
 
+      <Nav />
+
       {/* ═══════════ HERO ═══════════ */}
       <section className="relative min-h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24 z-20">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12">
@@ -164,7 +167,7 @@ export default function Home() {
       </div>
 
       {/* ═══════════ ABOUT ═══════════ */}
-      <section className="relative z-20 px-8 md:px-16 lg:px-24 py-24 md:py-32">
+      <section id="about" className="relative z-20 px-8 md:px-16 lg:px-24 py-24 md:py-32">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
           {/* Skills */}
           <div className="lg:w-1/2 shrink-0 flex flex-col gap-12">
@@ -280,7 +283,7 @@ export default function Home() {
       </div>
 
       {/* ═══════════ CONTACT ═══════════ */}
-      <section className="relative z-20 px-8 md:px-16 lg:px-24 py-24 md:py-32">
+      <section id="contact" className="relative z-20 px-8 md:px-16 lg:px-24 py-24 md:py-32">
         <div className="flex flex-col md:flex-row md:items-center gap-12 md:gap-16">
           <div className="flex-1">
             <ScrollReveal>
