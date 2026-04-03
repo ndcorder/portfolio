@@ -118,7 +118,10 @@ export function AsciiPhoto({
     import('./ascii-scene').then((m) => setScene(() => m.AsciiScene))
   }, [])
 
-  if (!Scene) return null
+  if (!Scene)
+    return (
+      <div className="w-full h-full bg-[#18181b] animate-pulse rounded" />
+    )
 
   return (
     <div
