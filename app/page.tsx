@@ -55,38 +55,51 @@ const SKILLS = [
   },
 ]
 
-const HIGHLIGHTS = [
+const HIGHLIGHTS: { label: string; description: string; href?: string }[] = [
   {
     label: 'TracCloud',
-    description: 'I built TracCloud and run it today — a SaaS platform serving 400+ universities on Linux, Apache, PHP, MySQL, and Redis on AWS.',
+    description:
+      "I built TracCloud and run it today — a SaaS platform serving 400+ universities on Linux, Apache, PHP, MySQL, and Redis on AWS.",
+    href: 'https://www.traccloud.net',
   },
   {
     label: 'Compliance Program',
-    description: 'I own the compliance program end to end: policy writing, control mapping, gap fixes, and audit prep across TX-RAMP, NIST 800-53, HECVAT, and others.',
+    description:
+      "I own the compliance program end to end: policy writing, control mapping, gap fixes, and audit prep across TX-RAMP, NIST 800-53, HECVAT, and others.",
   },
   {
     label: 'International Privacy',
-    description: 'Wrote privacy docs covering US state laws, GDPR, Canadian, UK, Kuwaiti, and Qatari requirements, plus DPAs.',
+    description:
+      "Wrote privacy docs covering US state laws, GDPR, Canadian, UK, Kuwaiti, and Qatari requirements, plus DPAs.",
   },
   {
     label: 'Security Training',
-    description: 'Built and run the company\'s security awareness training, including phishing simulations.',
-  },
-  {
-    label: 'Eagle Scout',
-    description: 'Earned Eagle Scout in 2007. Still involved as a Scout leader.',
-  },
-  {
-    label: '20 Years Teaching Martial Arts',
-    description: 'I\'ve taught martial arts for twenty years. It\'s where I learned to teach — breaking things down and meeting people where they are.',
+    description:
+      "Built and run the company's security awareness training, including phishing simulations.",
   },
   {
     label: 'Open Source Tooling',
-    description: 'I build open source tools in Rust, Python, TypeScript, and Svelte — research agents, LLM orchestration, security scanners.',
+    description:
+      'I build open source tools in Rust, Python, TypeScript, and Svelte — research agents, LLM orchestration, security scanners.',
+    href: 'https://github.com/ndcorder',
   },
   {
     label: 'Polyglot Engineer',
-    description: 'I write production code in PHP, Python, Go, C#, Rust, and TypeScript. I\'d rather pick the right language than make one do everything.',
+    description:
+      "I write production code in PHP, Python, Go, C#, Rust, and TypeScript. I'd rather pick the right language than make one do everything.",
+  },
+]
+
+const PERSONAL = [
+  {
+    label: 'Eagle Scout',
+    description:
+      'Earned Eagle Scout in 2007. Still involved as a Scout leader.',
+  },
+  {
+    label: '20 Years Teaching Martial Arts',
+    description:
+      "I've taught martial arts for twenty years. It's where I learned to teach — breaking things down and meeting people where they are.",
   },
 ]
 
@@ -199,7 +212,7 @@ export default function Home() {
       </div>
 
       {/* ═══════════ HIGHLIGHTS ═══════════ */}
-      <section className="relative z-20 px-8 md:px-16 lg:px-24 py-24 md:py-32">
+      <section id="highlights" className="relative z-20 px-8 md:px-16 lg:px-24 py-24 md:py-32">
         <ScrollReveal>
           <h2 className="font-mono text-2xl tracking-[0.3em] uppercase text-[#52525b] mb-12">
             HIGHLIGHTS
@@ -207,6 +220,46 @@ export default function Home() {
         </ScrollReveal>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
           {HIGHLIGHTS.map((item, i) => (
+            <ScrollReveal key={i} delay={i * 100}>
+              <div>
+                <h3 className="font-mono text-base md:text-xl text-[#d4d2cf] tracking-tight">
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[#2dd4bf] transition-colors duration-300"
+                    >
+                      {item.label}
+                      <span className="ml-2 text-[#52525b] text-sm">&#8599;</span>
+                    </a>
+                  ) : (
+                    item.label
+                  )}
+                </h3>
+                <p className="mt-1.5 text-lg text-[#52525b] leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="relative z-20 mx-8 md:mx-16 lg:mx-24">
+        <div className="h-px bg-[#18181b]" />
+      </div>
+
+      {/* ═══════════ BEYOND WORK ═══════════ */}
+      <section id="personal" className="relative z-20 px-8 md:px-16 lg:px-24 py-24 md:py-32">
+        <ScrollReveal>
+          <h2 className="font-mono text-2xl tracking-[0.3em] uppercase text-[#52525b] mb-12">
+            BEYOND WORK
+          </h2>
+        </ScrollReveal>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
+          {PERSONAL.map((item, i) => (
             <ScrollReveal key={i} delay={i * 100}>
               <div>
                 <h3 className="font-mono text-base md:text-xl text-[#d4d2cf] tracking-tight">
