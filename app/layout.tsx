@@ -18,10 +18,25 @@ export const metadata: Metadata = {
   title: 'Nicolas Corder — CISO & Principal Engineer',
   description:
     'CISO and Principal Engineer at Redrock Software Corporation. Building secure systems at scale.',
+  metadataBase: new URL('https://ndcorder.com'),
   openGraph: {
     title: 'Nicolas Corder — CISO & Principal Engineer',
     description: 'Building secure systems at scale.',
     type: 'website',
+    siteName: 'Nicolas Corder',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Nicolas Corder — CISO & Principal Engineer',
+    description: 'Building secure systems at scale.',
+  },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 }
 
