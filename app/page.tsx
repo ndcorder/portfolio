@@ -105,6 +105,7 @@ const PERSONAL = [
 ]
 
 const LINKS = [
+  { label: 'Resume', href: '/resume.pdf' },
   { label: 'GitHub', href: 'https://github.com/ndcorder' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/nicolas-corder-7511783b8/' },
   { label: 'Medium', href: 'https://medium.com/@nicdcorder'},
@@ -304,17 +305,21 @@ export default function Home() {
             {/* Social links */}
             <ScrollReveal delay={150}>
               <div className="mt-10 flex flex-wrap gap-6">
-                {LINKS.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-mono text-xs tracking-[0.15em] uppercase text-[#52525b] hover:text-[#2dd4bf] transition-colors duration-300"
-                  >
-                    {link.label}
-                  </a>
-                ))}
+                {LINKS.map((link) => {
+                  const isExternal = link.href.startsWith('http')
+                  return (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      {...(isExternal
+                        ? { target: '_blank', rel: 'noopener noreferrer' }
+                        : {})}
+                      className="font-mono text-xs tracking-[0.15em] uppercase text-[#52525b] hover:text-[#2dd4bf] transition-colors duration-300"
+                    >
+                      {link.label}
+                    </a>
+                  )
+                })}
               </div>
             </ScrollReveal>
           </div>
