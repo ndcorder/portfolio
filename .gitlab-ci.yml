@@ -34,7 +34,7 @@ deploy:
     - chmod 600 ~/.ssh/id_ed25519
     - ssh-keyscan -p ${SSH_PORT:-22} "$DEPLOY_HOST" >> ~/.ssh/known_hosts 2>/dev/null
   script:
-    - rsync -azv --delete
+    - rsync -rzv --delete
       -e "ssh -p ${SSH_PORT:-22} -o StrictHostKeyChecking=accept-new"
       .next/
       ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/

@@ -61,7 +61,7 @@ const HIGHLIGHTS: { label: string; description: string; href?: string }[] = [
     label: 'TracCloud',
     description:
       "I built TracCloud and run it today — a SaaS platform serving 400+ universities on Linux, Apache, PHP, MySQL, and Redis on AWS.",
-    href: 'https://www.traccloud.net',
+    href: 'https://trac.cloud',
   },
   {
     label: 'Compliance Program',
