@@ -1,0 +1,11 @@
+ndcorder.me {
+	reverse_proxy portfolio:3000
+}
+
+exitnode.studio {
+	reverse_proxy studio-landing:80
+}
+
+0day.game {
+	reverse_proxy landing:80
+}

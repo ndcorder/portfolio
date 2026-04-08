@@ -1,32 +1,13 @@
 stages:
-  - build
   - deploy
 
 variables:
-  NODE_VERSION: "20"
-  DEPLOY_PATH: "/opt/personal-landing"
+  DEPLOY_PATH: "/opt/portfolio"
   DEPLOY_USER: "nicolas"
-  # Set DEPLOY_HOST in GitLab CI/CD variables (Settings > CI/CD > Variables)
-  # Set SSH_PRIVATE_KEY as a CI/CD variable (type: File, masked)
-
-build:
-  stage: build
-  image: node:${NODE_VERSION}-alpine
-  script:
-    - npm ci
-    - npm run build
-  artifacts:
-    paths:
-      - .next/    # Change to build/ if using CRA instead of Vite
-    expire_in: 1 hour
-  only:
-    - master
 
 deploy:
   stage: deploy
   image: alpine:latest
-  needs:
-    - build
   before_script:
     - apk add --no-cache openssh rsync
     - mkdir -p ~/.ssh
@@ -35,9 +16,14 @@ deploy:
     - ssh-keyscan -p ${SSH_PORT:-22} "$DEPLOY_HOST" >> ~/.ssh/known_hosts 2>/dev/null
   script:
     - rsync -rzv --delete
+      --exclude='.git'
+      --exclude='node_modules'
+      --exclude='.next'
       -e "ssh -p ${SSH_PORT:-22} -o StrictHostKeyChecking=accept-new"
-      .next/
+      ./
       ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/
+    - ssh -p ${SSH_PORT:-22} ${DEPLOY_USER}@${DEPLOY_HOST}
+      "cd ${DEPLOY_PATH} && docker compose up -d --build"
   only:
     - master
   environment:
